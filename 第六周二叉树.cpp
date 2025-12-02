@@ -1,63 +1,75 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 
-struct Node {
+struct Node
+{
     char data;
-    Node* left;
-    Node* right;
-    Node(char val) : data(val), left(nullptr), right(nullptr) {}
-};
+    Node *left;
+    Node *right;
+    Node(char val) : data(val), left(nullptr), right(nullptr) {} // ä¼ å…¥çš„charæ˜¯å½“å‰çš„å­—ç¬¦
+}; // ç»“æ„ä½“é‡Œé¢æœ‰å·¦å³èŠ‚ç‚¹ï¼Œå½“å‰å­—ç¬¦ï¼Œè¿˜æœ‰ä¸€ä¸ªæ„é€ å‡½æ•°ã€‚
 
-// ¹¹½¨¶ş²æÊ÷
-Node* build(const string& pre, int& i) {
-    if (i >= pre.size() || pre[i] == '#') {
+Node *build(string pre, int &i)
+{
+    if (i >= pre.size() || pre[i] == '0')
+    {
         i++;
         return nullptr;
     }
-    Node* node = new Node(pre[i++]);
+    Node *node = new Node(pre[i++]);
     node->left = build(pre, i);
     node->right = build(pre, i);
     return node;
-}
+} // é€šè¿‡å…ˆåºéå†æ„å»ºæ ‘
 
-// ÏÈĞò±éÀú
-void preorder(Node* root) {
-    if (!root) return;
-    cout << root->data;
-    preorder(root->left);
-    preorder(root->right);
-}
+// void preorder(Node *root)
+// {
+//     if (!root)
+//         return;
+//     cout << root->data;
+//     preorder(root->left);
+//     preorder(root->right);
+// }
 
-// ÖĞĞò±éÀú
-void inorder(Node* root) {
-    if (!root) return;
+void inorder(Node *root)
+{
+    if (!root)
+        return;
     inorder(root->left);
     cout << root->data;
     inorder(root->right);
 }
 
-// ºóĞò±éÀú
-void postorder(Node* root) {
-    if (!root) return;
+void postorder(Node *root)
+{
+    if (!root)
+        return;
     postorder(root->left);
     postorder(root->right);
     cout << root->data;
 }
 
-int main() {
+int main()
+{
     int t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         string pre;
         cin >> pre;
         int i = 0;
-        Node* root = build(pre, i);
+        Node *root = build(pre, i);
 
-        preorder(root);   cout << endl;
-        inorder(root);    cout << endl;
-        postorder(root);  cout << endl;
+        // preorder(root);
+        // cout << endl;
+        inorder(root);
+        cout << endl;
+        postorder(root);
+        cout << endl;
     }
-    return 0#include <iostream>
+}
+/*
+#include <iostream>
 #include <queue>
 #include <string>
 using namespace std;
@@ -107,7 +119,8 @@ int main() {
     }
     return 0;
 };
-}*///ÈıÖÖ´ÎĞò±éÀúµÄ·½·¨
+}*/
+// ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 /*#include <iostream>
 #include <queue>
 #include <string>
@@ -168,7 +181,7 @@ struct Node {
     Node(char c) : data(c), left(nullptr), right(nullptr) {}
 };
 
-int leafCount;          // È«¾Ö¼ÆÊıÆ÷
+int leafCount;          // È«ï¿½Ö¼ï¿½ï¿½ï¿½ï¿½ï¿½
 string preStr;
 int idx;
 
@@ -180,7 +193,7 @@ Node* build() {
     Node* p = new Node(preStr[idx++]);
     p->left  = build();
     p->right = build();
-    // ¸ÕÔìÍê×óÓÒ×ÓÊ÷£¬ÅĞ¶Ï×Ô¼ºÊÇ²»ÊÇÒ¶×Ó
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½Ô¼ï¿½ï¿½Ç²ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½
     if (!p->left && !p->right) ++leafCount;
     return p;
 }
@@ -194,11 +207,12 @@ int main() {
         cin >> preStr;
         idx = 0;
         leafCount = 0;
-        build();           // Ê÷½¨Íê£¬Ò¶×ÓÒ²Í³¼ÆÍê
+        build();           // ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬Ò¶ï¿½ï¿½Ò²Í³ï¿½ï¿½ï¿½ï¿½
         cout << leafCount << '\n';
     }
     return 0;
-}*///ÕÒÒ¶×Ó½áµã£¬¾ÍÊÇ×óÓÒº¢×Ó½Úµã¶¼Îª¿Õ 
+}*/
+// ï¿½ï¿½Ò¶ï¿½Ó½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òºï¿½ï¿½Ó½Úµã¶¼Îªï¿½ï¿½
 /*
 #include <iostream>
 #include <string>
@@ -214,7 +228,7 @@ struct Node {
     Node(char c) : data(c), left(nullptr), right(nullptr) {}
 };
 
-// ÏÈĞò½¨¶ş²æÊ÷
+// ï¿½ï¿½ï¿½ò½¨¶ï¿½ï¿½ï¿½ï¿½ï¿½
 Node* build() {
     if (idx >= (int)preStr.size() || preStr[idx] == '0') {
         ++idx;
@@ -226,7 +240,7 @@ Node* build() {
     return p;
 }
 
-// ºóĞòµİ¹éÇó¸ß¶È
+// ï¿½ï¿½ï¿½ï¿½İ¹ï¿½ï¿½ï¿½ß¶ï¿½
 int height(Node* p) {
     if (!p) return 0;
     return max(height(p->left), height(p->right)) + 1;
@@ -304,45 +318,54 @@ int main() {
     }
     return 0;
 }*/
-#include <bits/stdc++.h>
-using namespace std;
+/*#include <bits/stdc++.h>
+        using namespace std;
 
-struct Node {
-    int val;
-    Node *left, *right;
-    Node(int v): val(v), left(nullptr), right(nullptr) {}
-};
+    struct Node
+    {
+        int val;
+        Node *left, *right;
+        Node(int v) : val(v), left(nullptr), right(nullptr) {}
+    };
 
-// ÓÃÊı×é a ½¨ÆÕÍ¨¶ş²æÊ÷£¬·µ»Ø¸ù
-Node* build(const vector<int>& a, int i) {
-    if (i >= (int)a.size() || a[i] == 0) return nullptr;
-    Node* root = new Node(a[i]);
-    root->left  = build(a, 2*i + 1);
-    root->right = build(a, 2*i + 2);
-    return root;
-}
-
-// ÏÈĞò±éÀú£¬Ã¿¸öÖµºó¶¼¼Ó¿Õ¸ñ
-void pre(Node* root) {
-    if (!root) return;
-    cout << root->val << ' ';
-    pre(root->left);
-    pre(root->right);
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; ++i) cin >> a[i];
-        Node* root = build(a, 0);
-        pre(root);
-        cout << '\n';
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ a ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
+    Node *build(const vector<int> &a, int i)
+    {
+        if (i >= (int)a.size() || a[i] == 0)
+            return nullptr;
+        Node *root = new Node(a[i]);
+        root->left = build(a, 2 * i + 1);
+        root->right = build(a, 2 * i + 2);
+        return root;
     }
-    return 0;
-}
+
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Öµï¿½ó¶¼¼Ó¿Õ¸ï¿½
+    void pre(Node * root)
+    {
+        if (!root)
+            return;
+        cout << root->val << ' ';
+        pre(root->left);
+        pre(root->right);
+    }
+
+    int main()
+    {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        int t;
+        cin >> t;
+        while (t--)
+        {
+            int n;
+            cin >> n;
+            vector<int> a(n);
+            for (int i = 0; i < n; ++i)
+                cin >> a[i];
+            Node *root = build(a, 0);
+            pre(root);
+            cout << '\n';
+        }
+        return 0;
+    }
+*/
